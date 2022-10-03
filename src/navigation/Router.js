@@ -17,7 +17,7 @@ const Router = props => {
           options={{headerShown: false}}
         />
         <Stack.Screen name = {'Get Reminders!'} component={TabNavigator}/>
-        <Stack.Screen name = {'Add Reminder'} component = {AddReminder}/>
+        <Stack.Screen name = {'Add Reminder!'} component = {AddReminder}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

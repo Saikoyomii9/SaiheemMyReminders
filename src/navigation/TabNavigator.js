@@ -1,6 +1,7 @@
 
 import React from 'react';
 import RemindersScreen from '../screens/Reminders';
+import PrioritiesScreen from '../screens/Priorities';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
@@ -22,7 +23,8 @@ const TabNavigator = props => {
       tabBarIconStyle: {display: 'none'}
      }}
     >
-     <Tab.Screen name= {'Add'} component={RemindersScreen}/>    
+     <Tab.Screen name= {'Reminder'} component={RemindersScreen}/>  
+     <Tab.Screen name= {'Priority'} component={PrioritiesScreen}/>  
      </Tab.Navigator>
   );
 };

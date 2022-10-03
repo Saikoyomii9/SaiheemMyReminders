@@ -26,14 +26,13 @@ const AddReminder = props => {
                 } 
 
                 try {
-                        database.AddReminder(title, description, date)
+                        database.addReminder(title, description, date)
                 } catch (error) {
                         console.log('Error adding list  ' + error);
                 }
         
                 
                 alert(title + ' Added ');//Alert List has been added
-                navigation.navigate('Add Reminder' );
         }
 
   return (

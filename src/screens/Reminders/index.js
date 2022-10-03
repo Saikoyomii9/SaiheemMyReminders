@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import  { View, TouchableOpacity, Text, FlatList } from 'react-native';
+import Reminder from '../../components/Reminder';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 // import openDatabase hook
 import { openDatabase} from "react-native-sqlite-storage"
 
 //use the hook to create database
-const shopperDB = openDatabase({name: 'Shopper.db'});
+const myRemindersDB = openDatabase({name: 'MyReminders.db'});
 const remindersTableName = 'reminders';
 
 
@@ -23,7 +24,7 @@ const RemindersScreen = props => {
         //SELECT
         let results = [];
         // declare a transaction that will execute the SELECT
-        shopperDB.transaction(txn => {
+        myRemindersDB.transaction(txn => {
           
           //execute SELECT
           txn.executeSql(
@@ -43,10 +44,10 @@ const RemindersScreen = props => {
                   let item  = res.rows.item(i);
                   results.push({
                     id: item.id,
-                    name: item.title,
-                    store: item.desc,
+                    title: item.title,
+                    desc: item.description,
                     date: item.date,
-                  });
+                    });
                   }
                   //assign the results array to the lists table
                   setRem(results);
@@ -71,14 +72,14 @@ const RemindersScreen = props => {
      <View>
      <FlatList
           data={reminders}
-          renderItem={({item}) => <List post={item} />} 
+          renderItem={({item}) => <Reminder post={item} />}
           keyExtractor={item=> item.id}
           />
           </View>
           <View style={styles.bottom}>
       <TouchableOpacity
        style={styles.button}
-       onPress={()=>navigation.navigate('Add Reminder')}
+       onPress={()=>navigation.navigate('Add Reminder!')}
        >
         <Text style={styles.buttonText}>Add Reminder</Text>
 

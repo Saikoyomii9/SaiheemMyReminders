@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     fontWeight: 'bold',
   },
-  description: {
+  desc: {
     fontSize: 18,
     marginLeft: 10,
     flex: 1,
